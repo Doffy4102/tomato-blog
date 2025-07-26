@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>TomatoEngg Admin Panel</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍅 TomatoEngg Admin Panel</h1>
+            <p>Content Management System</p>
+        </div>
+
+        <!-- Login Section -->
+        <div class="login-section" id="loginSection">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Admin Login</h2>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter admin username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter admin password">
+            </div>
+            <button onclick="login()" style="width: 100%;">Login</button>
+            <div id="loginError" class="error-message" style="display: none; margin-top: 15px;"></div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div class="admin-panel" id="adminPanel">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="showTab(event, 'dashboard')">Dashboard</button>
+                <button class="tab" onclick="showTab(event, 'content')">Manage Content</button>
+                <button class="tab" onclick="showTab(event, 'add')">Add New Content</button>
+            </div>
+
+            <!-- Dashboard Tab -->
+            <div class="tab-content active" id="dashboardTab">
+                <h2 style="margin-bottom: 30px;">Dashboard</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalContent">0</div>
+                        <div class="stat-label">Total Articles</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalCategories">0</div>
+                        <div class="stat-label">Categories</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="recentContent">0</div>
+                        <div class="stat-label">This Month</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Management Tab -->
+            <div class="tab-content" id="contentTab">
+                <h2 style="margin-bottom: 30px;">Manage Content</h2>
+                <div class="content-list" id="contentList"></div>
+            </div>
+
+            <!-- Add Content Tab -->
+            <div class="tab-content" id="addTab">
+                <h2 style="margin-bottom: 30px;">Add New Content</h2>
+                <div id="messages"></div>
+                <form id="contentForm">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" required placeholder="Enter article title">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Category:</label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Data Structures & Algorithms">Data Structures & Algorithms</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Chemical Engineering">Chemical Engineering</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" required placeholder="Brief description of the content"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tags:</label>
+                        <div class="tags-input" id="tagsContainer">
+                            <input type="text" class="tag-input" id="tagInput" placeholder="Type a tag and press Enter">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="readTime">Read Time (minutes):</label>
+                        <input type="number" id="readTime" required placeholder="Estimated read time in minutes">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="content">Content (HTML):</label>
+                        <textarea id="content" class="content-editor" required placeholder="Enter HTML content here..."></textarea>
+                    </div>
+                    
+                    <button type="submit">Add Content</button>
+                    <button type="button" class="btn-secondary" onclick="resetForm()">Reset Form</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

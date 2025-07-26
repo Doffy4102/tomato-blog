@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍅 Tomato Engg - Handcrafted Study Materials</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand">
+            <span class="tomato-icon">🍅</span>
+            <h1>Tomato Engg</h1>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/contribute">Contribute</a>
+        </nav>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <p class="tagline">📚 Handcrafted answers to score a 10 CGPA</p>
+        
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="text" class="search-input" placeholder="Search articles by topic, semester, subject..." id="searchInput">
+                <button class="search-btn" onclick="performSearch()">
+                    🔍
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h2 class="section-title">Latest Study Materials</h2>
+        
+        <div class="articles-grid" id="articlesGrid">
+            <!-- Articles will be loaded here -->
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+            <div class="no-results-icon">📚</div>
+            <h3>No articles found</h3>
+            <p>Try searching with different keywords or browse all available content.</p>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

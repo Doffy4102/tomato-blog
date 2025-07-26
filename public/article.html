@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand">
+            <span class="tomato-icon">🍅</span>
+            <h1>Tomato Engg</h1>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/contribute">Contribute</a>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <div class="article-container">
+            <!-- Article content will be loaded here -->
+        </div>
+    </main>
+
+    <script>
+        const articleContainer = document.querySelector('.article-container');
+        const articleId = window.location.pathname.split('/').pop();
+
+        const fetchArticle = async () => {
+            try {
+                const response = await fetch(`/api/articles/${articleId}`);
+                const article = await response.json();
+                document.title = article.title;
+                articleContainer.innerHTML = `
+                    <h1 class="article-title">${article.title}</h1>
+                    <div class="article-meta">
+                        <span class="subject-name">📖 ${article.category}</span>
+                        <span class="read-time">⏱️ ${article.readTime}</span>
+                        <span class="read-time">📅 ${article.createdAt}</span>
+                    </div>
+                    <div class="article-content">${article.content}</div>
+                `;
+            } catch (error) {
+                console.error('Error fetching article:', error);
+                articleContainer.innerHTML = '<p>Article not found</p>';
+            }
+        };
+
+        fetchArticle();
+    </script>
+</body>
+</html>

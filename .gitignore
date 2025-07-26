@@ -1,0 +1,12 @@
+# Dependencies
+/node_modules
+
+# Database File
+blog.db
+
+# Environment Variables
+.env
+
+# OS-specific
+.DS_Store
+npm-debug.log
